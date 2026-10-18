@@ -1,0 +1,10 @@
+[theme]
+primaryColor = "#087F8C"
+backgroundColor = "#F6F8FA"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#17324D"
+font = "sans serif"
+
+[server]
+maxMessageSize = 250
+fileWatcherType = "none"
