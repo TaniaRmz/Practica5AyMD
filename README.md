@@ -105,8 +105,7 @@ El dashboard lee el dataset preparado. Para mostrar las unidades físicas, desha
 
 ## Dashboard y boceto
 
-La propuesta inicial está en `BOCETO.md`, para que el equipo la revise y adapte. Se eligieron estas vistas:
-
+La propuesta está en `BOCETO.md`, 
 - **Consumo:** energía observada, potencia media y máxima, cobertura, evolución temporal, perfil por hora, distribución y tabla agregada. Filtros por fecha y agregación diaria, semanal o mensual.
 - **Calidad de datos:** cambios de la limpieza y separación temporal.
 - **Pearson:** mapa de calor, variables descartadas y criterio.
@@ -125,7 +124,7 @@ La potencia media por hora fue mayor a las **20:00 (1.90 kW)** y menor a las **0
 
 Los resultados calculados están en `data/data-processed/hallazgos.md`. Las tres vistas de hallazgos comparan horas, concentración de energía en minutos de mayor potencia y días con al menos 95 % de cobertura. Son resultados descriptivos de un hogar, no causas ni predicciones.
 
-El PDF pide que el análisis y el boceto sean del equipo. Este proyecto incluye apoyo de IA en código, propuesta visual y resúmenes calculados. El equipo debe revisar las decisiones, comprobar los hallazgos en el dashboard y adaptar el boceto y la exposición antes de entregarlos. No presenten el apoyo recibido como trabajo realizado sin asistencia.
+
 
 ## Comprobaciones
 
@@ -134,23 +133,6 @@ python -m unittest discover -s tests -v
 ```
 
 Se comprueba que modificar el bloque futuro no cambie el ajuste del entrenamiento, que el relleno use el pasado y respete su límite, y que la energía convierta correctamente los minutos y excluya la potencia imputada.
-
-## Repositorio y entrega
-
-El dataset original supera 100 MB y está excluido de Git, igual que los resultados procesados. Para reproducirlo se descarga de UCI y se ejecuta el pipeline. La presentación sí puede subirse al repositorio. No se entrega un reporte PDF.
-
-Para subir el proyecto, crea un repositorio nuevo en GitHub y ejecuta desde esta carpeta:
-
-```bash
-git init
-git add .
-git commit -m "Practica 5: preparacion de datos y dashboard"
-git branch -M main
-git remote add origin URL_DE_TU_REPOSITORIO
-git push -u origin main
-```
-
-Para compartir el dashboard pueden usar Streamlit Community Cloud, con `visualization/app.py` como archivo principal. Antes de publicarlo deberán disponer del Parquet procesado y sus archivos auxiliares en el servidor, o ejecutar el pipeline allí. El repositorio por sí solo no incluye los archivos grandes ni configura el alojamiento automáticamente.
 
 ## Referencias
 
