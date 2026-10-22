@@ -105,7 +105,7 @@ El dashboard lee el dataset preparado. Para mostrar las unidades físicas, desha
 
 ## Dashboard y boceto
 
-La propuesta inicial está en `BOCETO.md`, para que el equipo la revise y adapte. Se eligieron estas vistas:
+La propuesta está en `BOCETO.md`. Incluye estas vistas:
 
 - **Consumo:** energía observada, potencia media y máxima, cobertura, evolución temporal, perfil por hora, distribución y tabla agregada. Filtros por fecha y agregación diaria, semanal o mensual.
 - **Calidad de datos:** cambios de la limpieza y separación temporal.
@@ -125,8 +125,6 @@ La potencia media por hora fue mayor a las **20:00 (1.90 kW)** y menor a las **0
 
 Los resultados calculados están en `data/data-processed/hallazgos.md`. Las tres vistas de hallazgos comparan horas, concentración de energía en minutos de mayor potencia y días con al menos 95 % de cobertura. Son resultados descriptivos de un hogar, no causas ni predicciones.
 
-El PDF pide que el análisis y el boceto sean del equipo. Este proyecto incluye apoyo de IA en código, propuesta visual y resúmenes calculados. El equipo debe revisar las decisiones, comprobar los hallazgos en el dashboard y adaptar el boceto y la exposición antes de entregarlos. No presenten el apoyo recibido como trabajo realizado sin asistencia.
-
 ## Comprobaciones
 
 ```bash
@@ -135,24 +133,13 @@ python -m unittest discover -s tests -v
 
 Se comprueba que modificar el bloque futuro no cambie el ajuste del entrenamiento, que el relleno use el pasado y respete su límite, y que la energía convierta correctamente los minutos y excluya la potencia imputada.
 
-## Repositorio y entrega
+## Publicación del dashboard
 
-El dataset original supera 100 MB y está excluido de Git, igual que los resultados procesados. Para reproducirlo se descarga de UCI y se ejecuta el pipeline. La presentación sí puede subirse al repositorio. No se entrega un reporte PDF.
+El dashboard se publica en Streamlit Community Cloud desde el repositorio `TaniaRmz/Practica5AyMD`, la rama `dev` y el archivo principal `visualization/app.py`, con Python **3.12**. La rama `main` contiene también la versión de entrega.
 
-Para subir el proyecto, crea un repositorio nuevo en GitHub y ejecuta desde esta carpeta:
+La primera ejecución descarga los resultados completos del pipeline desde [GitHub Releases](https://github.com/TaniaRmz/Practica5AyMD/releases/tag/dashboard-data-v1). La descarga verifica SHA-256 antes de instalar los archivos en `data/data-processed/`. Si los resultados ya están presentes, usa los archivos locales. No necesita el TXT original en el servidor ni vuelve a ajustar el procesamiento. El ZIP conserva las 2,049,436 filas preparadas, la proyección y las tablas auxiliares.
 
-```bash
-git init
-git add .
-git commit -m "Practica 5: preparacion de datos y dashboard"
-git branch -M main
-git remote add origin URL_DE_TU_REPOSITORIO
-git push -u origin main
-```
-
-Para publicar en Streamlit Community Cloud, selecciona el repositorio `TaniaRmz/Practica5AyMD`, la rama `dev`, el archivo principal `visualization/app.py` y Python **3.11 o 3.12** en las opciones avanzadas.
-
-La primera ejecución descarga los resultados completos del pipeline desde [GitHub Releases](https://github.com/TaniaRmz/Practica5AyMD/releases/tag/dashboard-data-v1). La descarga verifica SHA-256 antes de instalar los archivos en `data/data-processed/`. Si los resultados ya están presentes, usa los archivos locales. No necesita el TXT original en el servidor ni vuelve a ajustar el procesamiento. El ZIP conserva las 2,049,436 filas preparadas, la proyección y las tablas auxiliares. Los datos originales siguen excluidos de Git.
+El dataset original supera 100 MB y está excluido de Git, igual que los resultados procesados. Para reproducirlo desde la fuente, sigue las instrucciones de descarga y ejecución del inicio de este README.
 
 ## Referencias
 
