@@ -150,7 +150,9 @@ git remote add origin URL_DE_TU_REPOSITORIO
 git push -u origin main
 ```
 
-Para compartir el dashboard pueden usar Streamlit Community Cloud, con `visualization/app.py` como archivo principal. Antes de publicarlo deberán disponer del Parquet procesado y sus archivos auxiliares en el servidor, o ejecutar el pipeline allí. El repositorio por sí solo no incluye los archivos grandes ni configura el alojamiento automáticamente.
+Para publicar en Streamlit Community Cloud, selecciona el repositorio `TaniaRmz/Practica5AyMD`, la rama `dev`, el archivo principal `visualization/app.py` y Python **3.11 o 3.12** en las opciones avanzadas.
+
+La primera ejecución descarga los resultados completos del pipeline desde [GitHub Releases](https://github.com/TaniaRmz/Practica5AyMD/releases/tag/dashboard-data-v1). La descarga verifica SHA-256 antes de instalar los archivos en `data/data-processed/`. Si los resultados ya están presentes, usa los archivos locales. No necesita el TXT original en el servidor ni vuelve a ajustar el procesamiento. El ZIP conserva las 2,049,436 filas preparadas, la proyección y las tablas auxiliares. Los datos originales siguen excluidos de Git.
 
 ## Referencias
 

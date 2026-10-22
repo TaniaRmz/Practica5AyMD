@@ -12,6 +12,7 @@ import streamlit as st
 from src.config import LABELS, PROCESSED, SOURCE
 from src.visualization.charts import distribution, heatmap, profile_chart, projection_chart, scree, time_chart
 from src.visualization.data import read_results
+from src.visualization.bootstrap import ensure_processed
 from src.visualization.metrics import aggregate, hourly_profile, observed_power, period_notes, summarize
 
 st.set_page_config(page_title="Consumo eléctrico | Práctica 5", page_icon="⚡", layout="wide")
@@ -24,10 +25,12 @@ def load_data(version):
     return read_results(PROCESSED)
 
 
-if not (PROCESSED / "results.json").exists() or not (PROCESSED / "prepared.parquet").exists():
-    st.info("Primero coloca el dataset completo en data/data-raw/ y ejecuta el procesamiento.")
-    st.code("python -m src.pipeline")
-    st.markdown(f"[Descargar el dataset en UCI]({SOURCE})")
+try:
+    with st.spinner("Preparando los datos del dashboard; la primera carga puede tardar unos minutos…"):
+        ensure_processed()
+except Exception:
+    st.error("No se pudieron descargar los datos preparados. Intenta recargar en unos minutos.")
+    st.markdown("[Descargar los datos preparados](https://github.com/TaniaRmz/Practica5AyMD/releases/tag/dashboard-data-v1)")
     st.stop()
 
 version = (PROCESSED / "results.json").stat().st_mtime_ns
