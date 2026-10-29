@@ -1,0 +1,174 @@
+{
+  "quality": {
+    "initial_rows": 2075259,
+    "initial_columns": 9,
+    "initial_types": {
+      "Date": "object",
+      "Time": "object",
+      "Global_active_power": "float64",
+      "Global_reactive_power": "float64",
+      "Voltage": "float64",
+      "Global_intensity": "float64",
+      "Sub_metering_1": "float64",
+      "Sub_metering_2": "float64",
+      "Sub_metering_3": "float64"
+    },
+    "initial_missing": {
+      "Date": 0,
+      "Time": 0,
+      "Global_active_power": 25979,
+      "Global_reactive_power": 25979,
+      "Voltage": 25979,
+      "Global_intensity": 25979,
+      "Sub_metering_1": 25979,
+      "Sub_metering_2": 25979,
+      "Sub_metering_3": 25979
+    },
+    "numeric_conversion_failures": {
+      "Global_active_power": 0,
+      "Global_reactive_power": 0,
+      "Voltage": 0,
+      "Global_intensity": 0,
+      "Sub_metering_1": 0,
+      "Sub_metering_2": 0,
+      "Sub_metering_3": 0
+    },
+    "negative_values": {
+      "Global_active_power": 0,
+      "Global_reactive_power": 0,
+      "Voltage": 0,
+      "Global_intensity": 0,
+      "Sub_metering_1": 0,
+      "Sub_metering_2": 0,
+      "Sub_metering_3": 0
+    },
+    "invalid_dates": 0,
+    "exact_duplicates": 0,
+    "start": "2006-12-16T17:24:00",
+    "end": "2010-11-26T21:02:00",
+    "cutoff": "2010-02-11T15:31:00",
+    "missing_timestamps": 0,
+    "missing_before_fill": {
+      "Global_active_power": 25979,
+      "Global_reactive_power": 25979,
+      "Voltage": 25979,
+      "Global_intensity": 25979,
+      "Sub_metering_1": 25979,
+      "Sub_metering_2": 25979,
+      "Sub_metering_3": 25979
+    },
+    "descriptive_before_fill": {
+      "Global_active_power": {
+        "count": 2049280.0,
+        "mean": 1.0916150365006245,
+        "std": 1.0572941610941602,
+        "min": 0.076,
+        "25%": 0.308,
+        "50%": 0.602,
+        "75%": 1.528,
+        "max": 11.122
+      },
+      "Global_reactive_power": {
+        "count": 2049280.0,
+        "mean": 0.12371447630387257,
+        "std": 0.1127219795510876,
+        "min": 0.0,
+        "25%": 0.048,
+        "50%": 0.1,
+        "75%": 0.194,
+        "max": 1.39
+      },
+      "Voltage": {
+        "count": 2049280.0,
+        "mean": 240.8398579745079,
+        "std": 3.2399866790091387,
+        "min": 223.2,
+        "25%": 238.99,
+        "50%": 241.01,
+        "75%": 242.89,
+        "max": 254.15
+      },
+      "Global_intensity": {
+        "count": 2049280.0,
+        "mean": 4.627759310587133,
+        "std": 4.444396259809398,
+        "min": 0.2,
+        "25%": 1.4,
+        "50%": 2.6,
+        "75%": 6.4,
+        "max": 48.4
+      },
+      "Sub_metering_1": {
+        "count": 2049280.0,
+        "mean": 1.1219233096502186,
+        "std": 6.153031089746822,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 0.0,
+        "max": 88.0
+      },
+      "Sub_metering_2": {
+        "count": 2049280.0,
+        "mean": 1.2985199679887571,
+        "std": 5.822026473135806,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 0.0,
+        "75%": 1.0,
+        "max": 80.0
+      },
+      "Sub_metering_3": {
+        "count": 2049280.0,
+        "mean": 6.45844735712055,
+        "std": 8.437153908625335,
+        "min": 0.0,
+        "25%": 0.0,
+        "50%": 1.0,
+        "75%": 17.0,
+        "max": 31.0
+      }
+    },
+    "filled_cells": 1092,
+    "dropped_incomplete_rows": 25823,
+    "clean_rows": 2049436,
+    "imputed_rows": 156,
+    "partition_rows": {
+      "entrenamiento": 1648859,
+      "evaluacion": 400577
+    },
+    "max_fill_minutes": 5,
+    "text_normalization": "Se quitaron espacios de fecha y hora. No hay categorías de texto libres que necesiten cambios de mayúsculas o acentos."
+  },
+  "horas_totales": 34170,
+  "horas_completas": 34141,
+  "horas_con_imputacion": 56,
+  "inicio": "2006-12-16 18:00:00",
+  "fin": "2010-11-26 20:00:00",
+  "items": 15,
+  "umbral_Wh": 100,
+  "min_support": 0.01,
+  "min_confidence": 0.6,
+  "reglas_confianza": 31,
+  "reglas_lift_positivo": 31,
+  "reglas_habitaciones": 31,
+  "sha256_original": "4259c9d7ece5dbee9ab8d53682baac68d791c864f0f64a52b4043cb3b90894b7",
+  "frecuencias": {
+    "Climatización": 0.49081749216484577,
+    "Madrugada": 0.25008054831434345,
+    "Noche": 0.2087519404821183,
+    "Tarde": 0.2081954248557453,
+    "Mañana": 0.2080782636712457,
+    "Viernes": 0.14402038604610293,
+    "Martes": 0.14381535397322867,
+    "Lunes": 0.14340528982748016,
+    "Miércoles": 0.14331741893910546,
+    "Jueves": 0.14308309657010632,
+    "Domingo": 0.14147213028323716,
+    "Sábado": 0.14088632436073928,
+    "Mediodía": 0.12489382267654726,
+    "Cocina": 0.11830350604844615,
+    "Lavandería": 0.07430948126885563
+  },
+  "sin_imputacion": 34085
+}

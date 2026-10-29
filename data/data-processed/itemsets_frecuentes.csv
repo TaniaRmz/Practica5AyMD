@@ -1,0 +1,126 @@
+support,itemsets
+0.49081749216484577,Climatización
+0.11830350604844615,Cocina
+0.14147213028323716,Domingo
+0.14308309657010632,Jueves
+0.07430948126885563,Lavandería
+0.14340528982748016,Lunes
+0.25008054831434345,Madrugada
+0.14381535397322867,Martes
+0.2080782636712457,Mañana
+0.12489382267654726,Mediodía
+0.14331741893910546,Miércoles
+0.2087519404821183,Noche
+0.14088632436073928,Sábado
+0.2081954248557453,Tarde
+0.14402038604610293,Viernes
+0.0905363053220468,Climatización + Cocina
+0.06695761694150727,Climatización + Domingo
+0.06607890805776047,Climatización + Jueves
+0.054069886646553995,Climatización + Lavandería
+0.06757271316013005,Climatización + Lunes
+0.055534401452798685,Climatización + Madrugada
+0.06979877566562198,Climatización + Martes
+0.1493512199408336,Climatización + Mañana
+0.07802934887671714,Climatización + Mediodía
+0.06909580855862453,Climatización + Miércoles
+0.1133241557072142,Climatización + Noche
+0.07767786532321842,Climatización + Sábado
+0.09457836618728216,Climatización + Tarde
+0.07363580445798307,Climatización + Viernes
+0.025218944963533583,Cocina + Domingo
+0.012389795260830087,Cocina + Jueves
+0.02161623854017164,Cocina + Lavandería
+0.01332708473682669,Cocina + Lunes
+0.012653407925954131,Cocina + Martes
+0.0208546908409244,Cocina + Mañana
+0.01684192027181395,Cocina + Mediodía
+0.01716411352918778,Cocina + Miércoles
+0.05011569666969333,Cocina + Noche
+0.02375443015728889,Cocina + Sábado
+0.025599718813157202,Cocina + Tarde
+0.01379572947482499,Cocina + Viernes
+0.01722269412143757,Domingo + Lavandería
+0.03532409712662195,Domingo + Madrugada
+0.02943674760551829,Domingo + Mañana
+0.017662048563310974,Domingo + Mediodía
+0.029612489382267654,Domingo + Noche
+0.02943674760551829,Domingo + Tarde
+0.03582203216074514,Jueves + Madrugada
+0.02972965056676723,Jueves + Mañana
+0.017837790340060337,Jueves + Mediodía
+0.02996397293576638,Jueves + Noche
+0.02972965056676723,Jueves + Tarde
+0.010544506604961775,Lavandería + Martes
+0.011716118449957529,Lavandería + Mañana
+0.016578307606689904,Lavandería + Mediodía
+0.014967341319820743,Lavandería + Miércoles
+0.019097273073430773,Lavandería + Noche
+0.013502826513576052,Lavandería + Sábado
+0.025921912070531034,Lavandería + Tarde
+0.03567558068012067,Lunes + Madrugada
+0.02981752145514191,Lunes + Mañana
+0.01792566122843502,Lunes + Mediodía
+0.03002255352801617,Lunes + Noche
+0.02996397293576638,Lunes + Tarde
+0.0360270642336194,Madrugada + Martes
+0.03585132245687004,Madrugada + Miércoles
+0.035353387422746844,Madrugada + Sábado
+0.0360270642336194,Madrugada + Viernes
+0.029993263231891273,Martes + Mañana
+0.0180135321168097,Martes + Mediodía
+0.029905392343516593,Martes + Noche
+0.0298761020473917,Martes + Tarde
+0.02981752145514191,Mañana + Miércoles
+0.029261005828768928,Mañana + Sábado
+0.03002255352801617,Mañana + Viernes
+0.017896370932310127,Mediodía + Miércoles
+0.0175448873788114,Mediodía + Sábado
+0.0180135321168097,Mediodía + Viernes
+0.0298761020473917,Miércoles + Noche
+0.0298761020473917,Miércoles + Tarde
+0.02943674760551829,Noche + Sábado
+0.029934682639641486,Noche + Viernes
+0.02929029612489382,Sábado + Tarde
+0.03002255352801617,Tarde + Viernes
+0.019683078995928648,Climatización + Cocina + Domingo
+0.018394305966433322,Climatización + Cocina + Lavandería
+0.01930230514630503,Climatización + Cocina + Mañana
+0.013737148882575203,Climatización + Cocina + Mediodía
+0.012506956445329662,Climatización + Cocina + Miércoles
+0.03570487097624557,Climatización + Cocina + Noche
+0.019741659588178438,Climatización + Cocina + Sábado
+0.018892241000556517,Climatización + Cocina + Tarde
+0.010720248381711138,Climatización + Cocina + Viernes
+0.01332708473682669,Climatización + Domingo + Lavandería
+0.011774699042207317,Climatización + Domingo + Mañana
+0.01209689229958115,Climatización + Domingo + Mediodía
+0.017017662048563312,Climatización + Domingo + Noche
+0.016607597902814797,Climatización + Domingo + Tarde
+0.023168624234791015,Climatización + Jueves + Mañana
+0.0161096628686916,Climatización + Jueves + Noche
+0.010368764828212413,Climatización + Lavandería + Mañana
+0.013209923552327115,Climatización + Lavandería + Mediodía
+0.012858439998828387,Climatización + Lavandería + Noche
+0.010720248381711138,Climatización + Lavandería + Sábado
+0.017017662048563312,Climatización + Lavandería + Tarde
+0.022963592161916756,Climatización + Lunes + Mañana
+0.010661667789461352,Climatización + Lunes + Mediodía
+0.01569959872294309,Climatización + Lunes + Noche
+0.010632377493336457,Climatización + Lunes + Tarde
+0.02290501156966697,Climatización + Martes + Mañana
+0.011276764008084122,Climatización + Martes + Mediodía
+0.015582437538443513,Climatización + Martes + Noche
+0.012184763187955831,Climatización + Martes + Tarde
+0.024515977856536128,Climatización + Mañana + Miércoles
+0.019829530476553118,Climatización + Mañana + Sábado
+0.0241937845991623,Climatización + Mañana + Viernes
+0.010485926012711989,Climatización + Mediodía + Miércoles
+0.012155472891830936,Climatización + Mediodía + Sábado
+0.011540376673208166,Climatización + Mediodía + Viernes
+0.015963211388067132,Climatización + Miércoles + Noche
+0.010720248381711138,Climatización + Miércoles + Tarde
+0.018540757447057788,Climatización + Noche + Sábado
+0.014410825693447761,Climatización + Noche + Viernes
+0.019653788699803755,Climatización + Sábado + Tarde
+0.015465276353943938,Climatización + Tarde + Viernes

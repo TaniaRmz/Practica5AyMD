@@ -1,4 +1,4 @@
-# Práctica 5: consumo eléctrico doméstico
+# Prácticas 5 y 6: consumo eléctrico doméstico
 
 Preparamos una serie de tiempo de consumo eléctrico para usarla en modelos de prácticas posteriores. El proyecto incluye limpieza, normalización con z-score, selección de variables con Pearson, PCA y un dashboard en Streamlit. La presentación tiene 10 diapositivas y se abre en el navegador.
 
@@ -147,3 +147,64 @@ El dataset original supera 100 MB y está excluido de Git, igual que los resulta
 - [StandardScaler, scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html).
 - [PCA, scikit-learn](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html).
 - [Documentación de Streamlit](https://docs.streamlit.io/).
+
+## Práctica 6: reglas de asociación
+
+Continuamos en este repositorio con el mismo TXT original. Para esta parte reutilizamos `clean_data`, antes de z-score, Pearson y PCA. Las reglas necesitan las submediciones en sus unidades originales. No se modifica el archivo original ni los resultados de la práctica 5.
+
+```bash
+python -m pip install -r requirements.txt
+python -m src.association.pipeline
+```
+
+También acepta `--input /ruta/household_power_consumption.txt`. Se ejecuta desde esta carpeta. La presentación está en `presentacion/practica6.html`, funciona sin internet y tiene **7 diapositivas**. Las flechas cambian de diapositiva. El guion está en `presentacion/guion_practica6.md`. Las gráficas interactivas independientes están en `graficas/practica6/`.
+
+### Transacciones y decisiones
+
+Una transacción equivale a una hora, de hh:00 a hh:59. Solo incluimos horas con 60 minutos que sobreviven a la limpieza. Conservamos la bandera de imputación: 56 de las 34,141 horas contienen algún minuto rellenado. El relleno usa hasta cinco minutos anteriores, como en la práctica 5. Eliminar horas incompletas evita subestimar su energía, pero puede dejar fuera periodos con hábitos distintos. No interpretamos los faltantes como aparatos apagados.
+
+Guardamos la media de las siete mediciones, la suma de cada submedidor en Wh y la energía global en kWh. Cada lectura del submedidor ya es energía de un minuto: sumarla da la energía de la hora. Para la potencia global en kW usamos suma dividida entre 60. El promedio de potencia reactiva se interpreta en kVAR, aunque la tabla de la consigna la rotula como kW.
+
+Una habitación está activa si su submedidor suma **más de 100 Wh** en esa hora. Es una decisión exploratoria y equivale a una potencia media de más de 100 W durante una hora completa. Comparamos 0, 50, 100 y 200 Wh. Con >0, lavandería está activa en 69.68 % de las horas. Con >100 Wh, en 7.43 %. Cocina cambia de 14.45 % a 11.83 % y climatización de 76.80 % a 49.08 %. Elegimos 100 Wh para reducir actividad pequeña o de fondo, aunque puede omitir usos breves. Esta clasificación no prueba que todos los aparatos de la habitación estén encendidos.
+
+Añadimos exactamente un día de la semana y una franja: madrugada 00–05, mañana 06–10, mediodía 11–13, tarde 14–18 y noche 19–23. Usamos la hora tal como aparece en el archivo, sin suponer una zona horaria que no incluye. `Habitaciones_Activas` se guarda como una lista JSON, incluso cuando está vacía. Las horas sin habitaciones activas siguen siendo transacciones con sus dos ítems temporales. No añadimos un ítem de consumo alto porque los pasos de la práctica piden habitaciones y tiempo.
+
+### Algoritmos y reglas
+
+Apriori y FP-Growth se ejecutan sobre la misma tabla booleana de 15 ítems, con soportes 0.005, 0.01, 0.02, 0.05, 0.1, 0.2, 0.4 y 0.8. Comprobamos que coincidan los conjuntos y sus soportes. Medimos solo la búsqueda, alternamos el orden y reportamos la mediana de tres repeticiones. Los tiempos dependen del equipo. En esta ejecución Apriori fue más rápido en los ocho casos.
+
+Con soporte 0.005 encontramos 166 conjuntos, con 0.01 encontramos 125 y con 0.8 ninguno. Un umbral bajo aumenta el número de conjuntos y puede producir coincidencias casuales. Aquí no observamos una explosión porque hay pocos ítems. Un umbral alto pierde hábitos poco frecuentes, como el uso de cocina. Las franjas y días son categorías excluyentes dentro de su propio grupo.
+
+Elegimos soporte **0.01** para exigir al menos 342 horas conjuntas y confianza **0.60** para exigir el consecuente en seis de cada diez horas del antecedente. Calculamos soporte, confianza y lift, y guardamos las **31 reglas con lift > 1**, ordenadas por lift y después soporte. También conservamos las reglas anteriores al filtro. Las métricas se comprueban contando directamente las transacciones.
+
+Las reglas describen el periodo completo, sin pretender evaluar un pronóstico. El corte de entrenamiento de la práctica 5 no se usa para este análisis descriptivo. Lift >1 indica asociación positiva, pero no demuestra causalidad ni significancia estadística. Buscar muchas reglas aumenta la posibilidad de coincidencias casuales. Para usar estos patrones en otro periodo habría que validarlos con datos posteriores.
+
+### Archivos generados
+
+En `data/data-processed/`:
+
+- `input_reglas_asociacion.csv`: una fila por hora, mediciones, energías, habitaciones y categorías temporales.
+- `transacciones_reglas.csv`: tabla booleana usada por ambos algoritmos.
+- `comparacion_algoritmos.csv`: conjuntos, tiempos de las tres repeticiones y comprobación de igualdad.
+- `itemsets_frecuentes.csv`: conjuntos con soporte mínimo 0.01.
+- `reglas_todas.csv`: reglas con confianza mínima de 0.60.
+- `reglas_asociacion.csv`: tabla final filtrada por lift >1.
+- `reglas_habitaciones.csv`: selección cuyo consecuente es una habitación.
+- `soporte_items.csv` y `sensibilidad_umbrales.csv`: frecuencias y comparación de umbrales.
+- `resultados_practica6.json` y `hallazgos_practica6.md`: resumen, limpieza y huella SHA-256 del original.
+
+Los resultados de la práctica 6 están incluidos en Git mediante excepciones concretas en `.gitignore`. El TXT y los resultados grandes de la práctica 5 continúan excluidos.
+
+Comprobaciones: `python -m unittest discover -s tests -v`. Incluyen horas incompletas, conversión de energía y un ejemplo de regla con métricas conocidas. La presentación explica las reglas más relevantes y su utilidad, sin afirmar un ahorro que no medimos.
+
+### Interpretación de las reglas principales
+
+- **Cocina y mañana ⇒ climatización:** aparece en 659 horas (1.93 %). La confianza es 92.56 % y el lift es 1.89. Cuando coinciden cocina y mañana, climatización aparece casi 1.9 veces más frecuentemente que en el conjunto completo, donde aparece en 49.08 % de las horas.
+- **Lavandería y mañana ⇒ climatización:** aparece en 354 horas (1.04 %), con confianza de 88.50 % y lift de 1.80. Es una coincidencia frecuente dentro de ese antecedente, aunque su soporte queda cerca del mínimo elegido.
+- **Cocina y lavandería ⇒ climatización:** aparece en 628 horas (1.84 %), con confianza de 85.09 % y lift de 1.73. Señala horas donde coinciden las tres zonas medidas.
+
+Las tres ayudan a elegir horarios para revisar el uso simultáneo. No permiten identificar por separado calentador, aire acondicionado o refrigerador. Tampoco prueban que mover una actividad vaya a reducir la energía consumida: habría que medirlo. Con los umbrales elegidos, todas las reglas finales tienen climatización como consecuente. Cocina y lavandería tienen menor soporte y ninguna regla hacia ellas alcanza la confianza mínima. No forzamos reglas adicionales bajando los umbrales después de ver el resultado.
+
+### Apoyo para explicar los algoritmos
+
+El guion de la práctica 6 incluye un ejemplo didáctico de cinco horas: candidatos y poda de Apriori, construcción del FP-tree, bases y árboles condicionales de FP-Growth. También desarrolla soporte, confianza y lift con un ejemplo y con los conteos de la regla principal del dataset. El ejemplo didáctico está identificado y no se presenta como un resultado real.

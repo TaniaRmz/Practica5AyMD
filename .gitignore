@@ -11,3 +11,16 @@ data/data-processed/*
 tmp/
 .build/
 *.zip
+
+# Resultados de la práctica 6 para revisar la entrega.
+!data/data-processed/input_reglas_asociacion.csv
+!data/data-processed/transacciones_reglas.csv
+!data/data-processed/comparacion_algoritmos.csv
+!data/data-processed/itemsets_frecuentes.csv
+!data/data-processed/reglas_todas.csv
+!data/data-processed/reglas_asociacion.csv
+!data/data-processed/reglas_habitaciones.csv
+!data/data-processed/soporte_items.csv
+!data/data-processed/sensibilidad_umbrales.csv
+!data/data-processed/resultados_practica6.json
+!data/data-processed/hallazgos_practica6.md
